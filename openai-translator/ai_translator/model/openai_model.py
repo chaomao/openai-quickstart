@@ -1,12 +1,10 @@
-import requests
-import simplejson
-import time
 import os
+import time
 import openai
-
+from openai import OpenAI
 from model import Model
 from utils import LOG
-from openai import OpenAI
+
 
 class OpenAIModel(Model):
     def __init__(self, model: str, api_key: str):
@@ -44,7 +42,7 @@ class OpenAIModel(Model):
                     raise Exception("Rate limit reached. Maximum attempts exceeded.")
             except openai.APIConnectionError as e:
                 print("The server could not be reached")
-                print(e.__cause__)  # an underlying Exception, likely raised within httpx.            except requests.exceptions.Timeout as e:
+                print(e.__cause__)  # an underlying Exception, likely raised within httpx.
             except openai.APIStatusError as e:
                 print("Another non-200-range status code was received")
                 print(e.status_code)
