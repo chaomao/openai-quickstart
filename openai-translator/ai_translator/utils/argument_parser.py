@@ -18,6 +18,8 @@ class ArgumentParser:
         self.parser.add_argument('--book', type=str, help='PDF file to translate.')
         self.parser.add_argument('--file_format', type=str,
                                  help='The file format of translated book. Now supporting PDF and Markdown')
+        self.parser.add_argument('--target_language', type=str, help='The Language will translate to',
+                                 default="中文", choices=["中文", "西班牙文"])
 
     def parse_arguments(self):
         args = self.parser.parse_args()
